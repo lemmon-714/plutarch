@@ -2,7 +2,7 @@
 
 When this guide uses the term "Plutarch Type" we explicitly talk about a type of _kind_ `PType`. We will refer to  _" types of kind `PType` "_ simply as `PType`s. We explicitly qualify when referring to the _kind_ `PType`.
 
-> Note to beginners: Plutarch uses a language extension called `DataKinds`. This means that there are kinds beyond `Type` (aka `*`). We refer the read to \[[3](./../Introduction.md#references)] for an extended beginner-level introduction to these concepts if desired.
+> Note to beginners: Plutarch uses a language extension called `DataKinds`. This means that there are kinds beyond `Type` (aka `*`)[^1]. We refer the read to \[[3](./../Introduction.md#references)] for an extended beginner-level introduction to these concepts if desired.
 
 `PType` is defined as `type PType = S -> Type`; that is, it is a _kind synonym_ for `S -> Type` (where `S` and `Type` are themselves kinds). This synonym is important to keep in mind because when querying the kind of something like `PBool` in, say, GHCi, we will _not_ see `PType` as the kind. Instead, we get
 
@@ -29,3 +29,5 @@ The above notion is essential to understanding why not all `PType`s have data co
 In general, the concrete UPLC representations are connected to Plutarch types through their `PlutusType` implementation.
 
 Also see: [Figuring out the representation of a Plutarch type](./../Tricks/Representation%20of%20Plutarch%20type.md).
+
+[^1]: Why do we sometimes read `*` and sometimes `Type`? By default GHC shows the kind `Type` as `*`, but it doesn't if -XNoStarIsType is enabled, then it prints it as `Type`. You want to look at whether -XNoStarIsType is enabled in your repl/ cabal file/ at the top of the module.
